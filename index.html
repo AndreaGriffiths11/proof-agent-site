@@ -307,8 +307,43 @@
         }
         
         /* Credits footer */
-        .credits {
+        .disclaimer {
             margin-top: var(--space-2xl);
+            padding: var(--space-lg);
+            background: var(--surface-1);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-warning);
+        }
+        
+        .disclaimer h3 {
+            font-size: var(--text-base);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .disclaimer p {
+            font-size: var(--text-sm);
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .disclaimer p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .disclaimer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
+        
+        .credits {
+            margin-top: var(--space-lg);
             padding-top: var(--space-lg);
             border-top: 1px solid var(--border-subtle);
             text-align: center;
@@ -498,6 +533,12 @@ retry:<br>
             </blockquote>
             <cite>— Core principle</cite>
         </footer>
+        
+        <div class="disclaimer">
+            <h3>⚠️ Experimental Tool</h3>
+            <p>Proof Agent is an experimental verification system. While it catches many issues, you still need to understand your code and review results carefully. Use as a supplement to, not replacement for, human code review.</p>
+            <p><strong>Repository:</strong> <a href="https://github.com/AndreaGriffiths11/proof-agent" target="_blank">github.com/AndreaGriffiths11/proof-agent</a></p>
+        </div>
         
         <div class="credits">
             <p>Made with ❤️ and GitHub CLI by <a href="https://ag11.dev" target="_blank">ag11.dev</a></p>
