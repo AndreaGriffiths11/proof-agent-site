@@ -7,7 +7,7 @@
     <title>Proof Agent - AI Verification System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Inter+Tight:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -191,6 +191,27 @@
             font-family: inherit;
             font-size: inherit;
             line-height: inherit;
+        }
+
+        .sidebar .usage-description {
+            color: var(--text-secondary);
+            font-size: var(--text-sm);
+            line-height: 1.5;
+            margin: var(--space-sm) 0 var(--space-xl);
+        }
+
+        .sidebar .usage-description a {
+            color: var(--accent-primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .sidebar .usage-description a:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar .usage-description code {
+            font-family: 'JetBrains Mono', monospace;
         }
         
 
@@ -453,7 +474,7 @@
                     <h2 class="section-title">Verification Checklist</h2>
                     <ul class="feature-list">
                         <li><div class="feature-marker"></div><strong>Correctness:</strong> Does the code actually do what was requested?</li>
-                        <li><div class="feature-marker"></div><strong>Bugs & Edge Cases:</strong> Regressions, unhandled errors, missed cases</li>
+                        <li><div class="feature-marker"></div><strong>Bugs &amp; Edge Cases:</strong> Regressions, unhandled errors, missed cases</li>
                         <li><div class="feature-marker"></div><strong>Security:</strong> Vulnerabilities, exposed secrets, permission issues</li>
                         <li><div class="feature-marker"></div><strong>Build:</strong> Are there obvious syntax errors or missing imports?</li>
                         <li><div class="feature-marker"></div><strong>Facts:</strong> Do version numbers, imports, and references look plausible?</li>
@@ -462,7 +483,13 @@
             </div>
             
             <aside class="sidebar">
-                <h3 class="section-title">GitHub Action (Zero Setup)</h3>
+                <h3 class="section-title">Grok Bot on X</h3>
+                <p class="usage-description">
+                    <a href="https://x.ai/bot/D6Bv_HwN2ATIghQLFoDaz" target="_blank" rel="noopener noreferrer">Use the published Grok Bot</a>
+                    to coordinate the sealed <code>scripts/verify.sh | proof-agent-verify-copilot</code> pipeline. The bot reports Copilot's PASS, FAIL, or PARTIAL verdict; it does not judge code itself.
+                </p>
+
+                <h3 class="section-title">GitHub Action</h3>
                 <pre><code>name: Proof Agent
 on:
   pull_request:
@@ -471,7 +498,7 @@ on:
 permissions:
   contents: read
   pull-requests: write
-  models: read
+  copilot-requests: write
 
 jobs:
   verify:
@@ -487,13 +514,10 @@ jobs:
                 
                 <h3 class="section-title">Command Line</h3>
                 <pre><code># Verify last commit
-bash scripts/verify.sh
+bash scripts/verify.sh | proof-agent-verify-copilot
 
-# Verify since main branch  
-bash scripts/verify.sh main
-
-# Generate verification prompt
-bash scripts/verify.sh > prompt.txt
+# Verify since main branch
+bash scripts/verify.sh main | proof-agent-verify-copilot
 </code></pre>
                 
                 <h3 class="section-title">Configuration</h3>
@@ -555,8 +579,8 @@ retry:
                 </div>
                 <div class="process-step">
                     <div class="step-number">4</div>
-                    <div class="step-title">Assign Verdict</div>
-                    <div class="step-description">PASS, FAIL, or PARTIAL with supporting evidence</div>
+                    <div class="step-title">Report Verdict</div>
+                    <div class="step-description">Returns the verifier's PASS, FAIL, or PARTIAL with supporting evidence</div>
                 </div>
             </div>
         </section>
