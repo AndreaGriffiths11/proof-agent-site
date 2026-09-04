@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-04T10:31:33.165Z",
+  "title": "Design System: Proof Agent",
+  "extensions": {
+    "colorMeta": {
+      "verification-red": {
+        "role": "primary",
+        "displayName": "Verification Red",
+        "canonical": "#dc3545",
+        "tonalRamp": ["#33070c", "#5c0d16", "#85131f", "#ae1a29", "#dc3545", "#e76b77", "#f2a1a8", "#fbd7da"]
+      },
+      "pass-green": {
+        "role": "secondary",
+        "displayName": "Pass Green",
+        "canonical": "#198754",
+        "tonalRamp": ["#061f14", "#0a3823", "#0f5132", "#146a42", "#198754", "#55a981", "#91cab0", "#d0eadc"]
+      },
+      "pass-green-text": {
+        "role": "secondary",
+        "displayName": "Pass Green Text",
+        "canonical": "#157347",
+        "tonalRamp": ["#051c11", "#09341f", "#0d4b2e", "#12633d", "#157347", "#529b75", "#90c4a7", "#d0e8da"]
+      },
+      "partial-orange": {
+        "role": "secondary",
+        "displayName": "Partial Orange",
+        "canonical": "#fd7e14",
+        "tonalRamp": ["#3b1800", "#6a2c00", "#994000", "#c95500", "#fd7e14", "#fda45a", "#fec99f", "#ffead6"]
+      },
+      "partial-orange-text": {
+        "role": "secondary",
+        "displayName": "Partial Orange Text",
+        "canonical": "#b84e00",
+        "tonalRamp": ["#301200", "#592100", "#813100", "#a94200", "#b84e00", "#d98140", "#ebba91", "#f9e5d6"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#212529",
+        "tonalRamp": ["#151719", "#212529", "#3d4247", "#5c6268", "#7e858c", "#a6abb0", "#cfd2d5", "#f4f5f6"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#fefefe",
+        "tonalRamp": ["#242424", "#454545", "#686868", "#8d8d8d", "#b3b3b3", "#d0d0d0", "#e9e9e9", "#fefefe"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Product name and high-signal technical headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Compact explanatory documentation."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Commands, verdicts, and resource paths."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "interaction",
+        "value": "180ms cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Hover and active feedback for links."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile",
+        "value": "768px"
+      },
+      {
+        "name": "tablet",
+        "value": "960px"
+      },
+      {
+        "name": "wide",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Resource Link",
+      "kind": "nav",
+      "refersTo": "resource-link",
+      "description": "Direct path to a supported Proof Agent surface.",
+      "html": "<a class=\"ds-resource-link\" href=\"#\">GitHub Action <span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-resource-link { min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--border-subtle); color: var(--text-primary); font: 600 14px/1.4 'JetBrains Mono', monospace; text-decoration: none; transition: color 180ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-resource-link:hover { color: var(--accent-primary); } .ds-resource-link:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }"
+    },
+    {
+      "name": "Code Block",
+      "kind": "custom",
+      "refersTo": "code-block",
+      "description": "Runnable setup or configuration excerpt.",
+      "html": "<pre class=\"ds-code\"><code>bash scripts/verify.sh main | proof-agent-verify-copilot</code></pre>",
+      "css": ".ds-code { margin: 0; overflow-x: auto; border-radius: 6px; background: var(--text-primary); color: var(--surface-0); padding: 24px; font: 400 14px/1.5 'JetBrains Mono', monospace; }"
+    },
+    {
+      "name": "Verdict Row",
+      "kind": "custom",
+      "description": "A semantic result and its merge consequence.",
+      "html": "<div class=\"ds-verdict\"><strong>FAIL</strong><span>Issues found with file and line evidence.</span></div>",
+      "css": ".ds-verdict { display: grid; grid-template-columns: 112px 1fr; gap: 16px; align-items: baseline; border-top: 1px solid var(--border-subtle); padding: 16px 0; color: var(--text-primary); font-family: 'Inter Tight', sans-serif; } .ds-verdict strong { color: var(--accent-primary); font: 600 16px/1.4 'JetBrains Mono', monospace; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Verification Bench",
+    "overview": "Proof Agent should feel like a compact workbench used to inspect a change, not a campaign built to sell one. Neutral surfaces carry dense technical content while verification red marks attention, failure, and primary paths. Green and orange retain their literal verdict roles. The composition is asymmetric and practical: explanation and evidence occupy the main reading column, while runnable usage paths stay visible in a dedicated technical panel.",
+    "keyCharacteristics": [
+      "Compact technical rhythm with clear section breaks",
+      "Monospace for commands, labels, and high-signal headings",
+      "Flat surfaces separated by tone and rules instead of decorative shadow",
+      "Direct links to every supported usage path"
+    ],
+    "rules": [
+      {
+        "name": "The Semantic Accent Rule",
+        "body": "Red, green, and orange must retain verification meaning; never use them as interchangeable decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mechanism First Rule",
+        "body": "Use monospace where the text names a command, path, verdict, or system boundary, not as decoration.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Bench Rule",
+        "body": "Surfaces stay flat at rest; never pair a border with a wide decorative shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep body copy between 45ch and 72ch.",
+      "Do preserve direct links to the repository, GitHub Action, and Grok Bot in the hero and experimental-tool resources.",
+      "Do keep mobile content in a single logical reading order without horizontal scrolling."
+    ],
+    "donts": [
+      "Don't turn the site into a generic SaaS landing page.",
+      "Don't use excessive card grids or decorative grid backgrounds.",
+      "Don't use inflated AI claims or unrelated visual spectacle.",
+      "Don't use a colored border-left or border-right wider than 1px as an accent."
+    ]
+  }
+}
